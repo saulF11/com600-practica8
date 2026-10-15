@@ -5,14 +5,18 @@ on:
   pull_request:
 
 jobs:
-  verificar:
+  pruebas:
     runs-on: ubuntu-latest
     steps:
-      - name: Traer el código del repositorio
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Comprobar que el mecanismo funciona
-        run: |
-          echo "Commit: $GITHUB_SHA"
-          echo "Rama: $GITHUB_REF_NAME"
-          ls -la
+      - name: Preparar Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Ejecutar la suite de la Práctica 7
+        run: npm test
