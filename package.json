@@ -1,0 +1,25 @@
+{
+  "name": "practica7-pruebas",
+  "version": "1.0.0",
+  "description": "Práctica 7 - Pruebas automatizadas de un microservicio (COM-600)",
+  "private": true,
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest",
+    "test:unit": "jest --testPathIgnorePatterns=int.test.js",
+    "test:int": "jest int.test.js --runInBand",
+    "test:cov": "jest --coverage",
+    "ci": "npm ci && npm run test:cov"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0"
+  },
+  "devDependencies": {
+    "@testcontainers/mongodb": "^10.13.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0",
+    "testcontainers": "^10.13.0"
+  }
+}
