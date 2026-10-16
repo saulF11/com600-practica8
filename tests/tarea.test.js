@@ -81,3 +81,7 @@ describe("estadoDeTarea", () => {
     });
   });
 });
+
+test("falla deliberada para el laboratorio 6", () => {
+  expect(1).toBe(2);
+});
