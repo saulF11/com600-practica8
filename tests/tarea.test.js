@@ -81,3 +81,5 @@ describe("estadoDeTarea", () => {
     });
   });
 });
+
+test("falla deliberada para el laboratorio 3", () => { expect("PENDIENTE").toBe("ATRASADA"); });
