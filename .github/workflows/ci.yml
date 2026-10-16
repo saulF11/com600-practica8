@@ -32,3 +32,21 @@ jobs:
           name: cobertura-${{ github.sha }}
           path: coverage/
           retention-days: 7
+
+  calidad:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Análisis estático
+        run: npx eslint src tests --max-warnings 0
+
+      - name: Escaneo de dependencias
+        run: npm audit --audit-level=critical
